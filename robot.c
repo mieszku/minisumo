@@ -23,6 +23,9 @@ volatile unsigned char 	analog_input [8];
 volatile enum movement	engine_l = STOP;
 volatile enum movement	engine_r = STOP;
 
+volatile enum color	color_l;
+volatile enum color	color_r;
+
 extern void	start		(void);
 
 static void	robot_thread	(void*);
@@ -148,8 +151,7 @@ void delay (unsigned delay)
 #define BACKWARD_L	(STOP_L-20)
 #define BACKWARD_R	(STOP_L+20)
 
-static unsigned char pwm_l __attribute__ ((address (0x4D)));
-static unsigned char pwm_r __attribute__ ((address (0x4C)));
+#define COLOR_PARTITION	40
 
 static void robot_thread (void* obj)
 {
@@ -159,6 +161,15 @@ static void robot_thread (void* obj)
 	while (1) {
 		for (unsigned char i = 0; i < 8; i++)
 			analog_input [i] = adc_read (i);
+
+		uint8_t color_lvalue = adc_read (4);
+		uint8_t color_rvalue = adc_read (3);
+
+		color_l = color_lvalue > COLOR_PARTITION ?
+			LIGHT : DARK;
+
+		color_r = color_rvalue > COLOR_PARTITION ?
+			LIGHT : DARK;
 
 		if (engine_l != state_l) {
 			state_l = engine_l;

@@ -12,10 +12,18 @@ enum movement
 	BACKWARD
 };
 
+enum color
+{
+	LIGHT,
+	DARK
+};
+
 extern volatile unsigned char	analog_input [8];
 
 extern volatile enum movement	engine_l;
 extern volatile enum movement	engine_r;
+extern volatile enum color	color_l;
+extern volatile enum color	color_r;
 
 void		set_position	(unsigned	y,
 				 unsigned	x);

@@ -6,43 +6,40 @@
 
 void start (void)
 {
-	while (1) {
-		set_position (0, 0);
-		put_string ("ain 0: ");
-		clear_chars (3);
-		put_uint (analog_input [0]);
-		set_position (0, 10);
-		put_string ("ain 1: ");
-		clear_chars (3);
-		put_uint (analog_input [1]);
+	engine_l = FORWARD;
+	clear_screen ();
+	set_position (0, 0);
+	put_string ("left forward");
+	delay (1500);
 
-		set_position (1, 0);
-		put_string ("ain 2: ");
-		clear_chars (3);
-		put_uint (analog_input [2]);
-		set_position (1, 10);
-		put_string ("ain 3: ");
-		clear_chars (3);
-		put_uint (analog_input [3]);
+	engine_l = BACKWARD;
+	clear_screen ();
+	set_position (0, 0);
+	put_string ("left backward");
+	delay (1500);
 
-		set_position (2, 0);
-		put_string ("ain 4: ");
-		clear_chars (3);
-		put_uint (analog_input [4]);
-		set_position (2, 10);
-		put_string ("ain 5: ");
-		clear_chars (3);
-		put_uint (analog_input [5]);
+	engine_l = STOP;
+	engine_r = STOP;
+	clear_screen ();
+	set_position (0, 0);
+	put_string ("both stop");
+	delay (4000);
 
-		set_position (3, 0);
-		put_string ("ain 6: ");
-		clear_chars (3);
-		put_uint (analog_input [6]);
-		set_position (3, 10);
-		put_string ("ain 7: ");
-		clear_chars (3);
-		put_uint (analog_input [7]);
+	engine_r = FORWARD;
+	clear_screen ();
+	set_position (0, 0);
+	put_string ("right forward");
+	delay (1500);
 
-		delay (200);
-	}
+	engine_r = BACKWARD;
+	clear_screen ();
+	set_position (0, 0);
+	put_string ("right backward");
+	delay (1500);
+
+	engine_l = STOP;
+	engine_r = STOP;
+	clear_screen ();
+	set_position (0, 0);
+	put_string ("both stop");
 }

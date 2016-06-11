@@ -7,7 +7,17 @@
 
 #include <inttypes.h>
 
-extern uint8_t	rand_seed		(void);
+#include "thread.h"
+
+#ifndef NULL
+	#define NULL	((void*) 0)
+#endif
+
+extern const thread_t system_thread;
+
+void		system_init		(void) __attribute__ ((naked));
+
+uint8_t		rand_seed		(void);
 
 uint32_t	system_get_time		(void);
 void		system_sleep		(uint16_t	delay);

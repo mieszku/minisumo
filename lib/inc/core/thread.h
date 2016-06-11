@@ -13,17 +13,20 @@ typedef struct thread_t thread_t;
 
 struct thread_t
 {
-	thread_t*	_next;
-	thread_t*	_prev;
-	void*		_sptr;
-	void*		_spnd;
-	uint8_t		_flag;
-	uint8_t		_pdng;
+	thread_t* const		_next;
+	thread_t* const		_prev;
+	void* const		_sptr;
+	void* const 		_spnd;
+	const uint8_t		_flags;
 
-	const char*	name;
+	const char* const	name;
 } __attribute__ ((packed));
 
 extern const thread_t* const 	thread_current;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 thread_t*	thread_exec		(thread_func_t	run,
 					 void*		obj,
@@ -41,5 +44,9 @@ thread_t*	thread_run_alloc	(thread_func_t	run,
 					 const char*	name,
 					 uint16_t	stsize);
 void		thread_kill	(void) __attribute__ ((noreturn));
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

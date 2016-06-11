@@ -12,8 +12,8 @@ HEX	= ${PROJ}.hex
 
 CC	= avr-gcc -c
 LD	= avr-gcc
-CFLAGS	= -mmcu=atmega32 -DF_CPU=14745600UL -Iavrmeos/inc/
-LDFLAGS	= -mmcu=atmega32 avrmeos/libmeos.a -Tldscripts/avr5.xn
+CFLAGS	= -mmcu=atmega32 -DF_CPU=14745600UL -Ilib/inc/core
+LDFLAGS	= -mmcu=atmega32 lib/libmeos.a -Tldscripts/avr5.xn
 
 elf: ${ELF}
 
@@ -32,3 +32,5 @@ ${ELF}: ${OBJ}
 obj/%.c.o: %.c
 	@mkdir -p ${dir $@}
 	${CC} -MMD $< -o $@ ${CFLAGS}
+
+-include ${DEP}

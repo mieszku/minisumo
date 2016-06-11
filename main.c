@@ -6,25 +6,43 @@
 
 void start (void)
 {
-	unsigned char v = 0;
-
-	engine_left.set (82);
-	engine_right.set (0);
-
-
-	clrscr ();
-
-	gotoxy (0, 0);
-	put_string ("hello world");
-
 	while (1) {
-		engine_right.set (v++);
+		set_position (0, 0);
+		put_string ("ain 0: ");
+		clear_chars (3);
+		put_uint (analog_input [0]);
+		set_position (0, 10);
+		put_string ("ain 1: ");
+		clear_chars (3);
+		put_uint (analog_input [1]);
 
-		gotoxy (0, 1);
-		put_string ("   ");
-		gotoxy (0, 1);
-		put_int (engine_right.get ());
+		set_position (1, 0);
+		put_string ("ain 2: ");
+		clear_chars (3);
+		put_uint (analog_input [2]);
+		set_position (1, 10);
+		put_string ("ain 3: ");
+		clear_chars (3);
+		put_uint (analog_input [3]);
 
-		sleep (100);
+		set_position (2, 0);
+		put_string ("ain 4: ");
+		clear_chars (3);
+		put_uint (analog_input [4]);
+		set_position (2, 10);
+		put_string ("ain 5: ");
+		clear_chars (3);
+		put_uint (analog_input [5]);
+
+		set_position (3, 0);
+		put_string ("ain 6: ");
+		clear_chars (3);
+		put_uint (analog_input [6]);
+		set_position (3, 10);
+		put_string ("ain 7: ");
+		clear_chars (3);
+		put_uint (analog_input [7]);
+
+		delay (200);
 	}
 }

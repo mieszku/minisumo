@@ -159,6 +159,8 @@ static void robot_thread (void* obj)
 	static enum movement state_r = !STOP;
 
 	while (1) {
+		system_int = 0;
+
 		for (unsigned char i = 0; i < 8; i++)
 			analog_input [i] = adc_read (i);
 
@@ -200,5 +202,8 @@ static void robot_thread (void* obj)
 				OCR1A = STOP_R;
 			}
 		}
+
+		if (! system_int)
+			system_yield ();
 	}
 }

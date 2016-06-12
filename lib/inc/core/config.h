@@ -6,7 +6,7 @@
 #define __CONFIG_H
 
 /* specific platform */
-//#define __arduino_uno__
+#define __arduino_uno__
 
 
 /* system timer */
@@ -35,7 +35,7 @@
 #define MAX_TASKS		16
 
 /* size of system stack */
-#define SYSTEM_STACK_SIZE	64
+#define SYSTEM_STACK_SIZE	32
 
 /* fixed size of heap on which dynamic memory is allocated */
 #define HEAP_SIZE		768

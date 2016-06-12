@@ -5,6 +5,8 @@
 #ifndef __ROBOT_H
 #define __ROBOT_H
 
+typedef void (*proc_t) (void);
+
 enum movement
 {
 	STOP,
@@ -40,5 +42,7 @@ void		put_ulong	(unsigned long	n);
 unsigned long	get_time	(void);
 char		get_random	(void);
 void		delay		(unsigned 	millis);
+void		run_thread	(proc_t		func,
+				 unsigned	size);
 
 #endif

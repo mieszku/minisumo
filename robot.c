@@ -144,6 +144,12 @@ void delay (unsigned delay)
 	system_sleep (delay);
 }
 
+void run_thread (proc_t   proc,
+		 unsigned size)
+{
+	thread_run_alloc ((thread_func_t) proc, NULL, "", size);
+}
+
 #define STOP_L		82
 #define STOP_R		77
 #define FORWARD_L	(STOP_L+20)
@@ -167,10 +173,10 @@ static void robot_thread (void* obj)
 		uint8_t color_lvalue = adc_read (4);
 		uint8_t color_rvalue = adc_read (3);
 
-		color_l = color_lvalue > COLOR_PARTITION ?
+		color_l = color_lvalue < COLOR_PARTITION ?
 			LIGHT : DARK;
 
-		color_r = color_rvalue > COLOR_PARTITION ?
+		color_r = color_rvalue < COLOR_PARTITION ?
 			LIGHT : DARK;
 
 		if (engine_l != state_l) {

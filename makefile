@@ -13,7 +13,7 @@ HEX	= ${PROJ}.hex
 CC	= avr-gcc -c
 LD	= avr-gcc
 CFLAGS	= -mmcu=atmega32 -DF_CPU=14745600UL -Ilib/inc/core
-LDFLAGS	= -mmcu=atmega32 lib/libmeos.a -Tldscripts/avr5.xn
+LDFLAGS	= -mmcu=atmega32 lib/libavrmeos.a -Tldscripts/avr5.xn
 
 elf: ${ELF}
 
